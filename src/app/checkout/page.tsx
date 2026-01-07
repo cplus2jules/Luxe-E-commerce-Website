@@ -8,7 +8,7 @@ import Input from '@/components/ui/Input';
 import styles from './page.module.css';
 
 export default function CheckoutPage() {
-    const { state, getCartTotal } = useCart();
+    const { state, getCartTotal, clearCart } = useCart();
     const { items } = state;
     const subtotal = getCartTotal();
     const tax = subtotal * 0.1;
@@ -24,6 +24,7 @@ export default function CheckoutPage() {
         // Simulate API call
         setTimeout(() => {
             setLoading(false);
+            clearCart(); // Clear cart after successful order
             setStep('confirm');
         }, 2000);
     };
@@ -64,7 +65,7 @@ export default function CheckoutPage() {
     return (
         <div className={styles.page}>
             <div className={styles.container}>
-                <h1 className={styles.pageTitle}>Secure Checkout</h1>
+                <h1 className={styles.pageTitle}>Checkout</h1>
 
                 <div className={styles.layout}>
                     {/* Checkout Form */}
@@ -72,28 +73,28 @@ export default function CheckoutPage() {
                         <form onSubmit={handleSubmit} className={styles.form} id="checkout-form">
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Contact Information</h2>
-                                <Input label="Email Address" type="email" placeholder="email@example.com" required />
+                                <Input label="Email Address" type="email" placeholder="julian.salas@example.com" required />
                             </section>
 
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Shipping Address</h2>
                                 <div className={styles.row}>
-                                    <Input label="First Name" placeholder="Jane" required />
-                                    <Input label="Last Name" placeholder="Doe" required />
+                                    <Input label="First Name" placeholder="Julian" required />
+                                    <Input label="Last Name" placeholder="Salas" required />
                                 </div>
-                                <Input label="Address" placeholder="123 Luxury Lane" required />
-                                <Input label="Apartment, suite, etc." placeholder="Unit 4B" />
+                                <Input label="Address" placeholder="Caraga State University, Ampayon" required />
+                                <Input label="Apartment, suite, etc." placeholder="Hiraya Hall, CL1" />
                                 <div className={styles.row3}>
-                                    <Input label="City" placeholder="New York" required />
-                                    <Input label="State" placeholder="NY" required />
-                                    <Input label="ZIP" placeholder="10001" required />
+                                    <Input label="City" placeholder="Butuan City" required />
+                                    <Input label="Province" placeholder="Agusan del Norte" required />
+                                    <Input label="ZIP" placeholder="8600" required />
                                 </div>
                             </section>
 
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Payment</h2>
                                 <div className={styles.paymentPlaceholder}>
-                                    Payment integration would go here. (Stripe/PayPal)
+                                    Just pay with your smile! :)
                                 </div>
                             </section>
                         </form>
@@ -108,7 +109,7 @@ export default function CheckoutPage() {
                                     <div key={`${item.product.id}-${item.selectedSize}`} className={styles.summaryItem}>
                                         <div className={styles.itemInfo}>
                                             <span className={styles.itemName}>{item.product.name}</span>
-                                            <span className={styles.itemVariant}>
+                                            <span className={styles.itemVariiant}>
                                                 Qty: {item.quantity} | Size: {item.selectedSize || 'N/A'}
                                             </span>
                                         </div>
