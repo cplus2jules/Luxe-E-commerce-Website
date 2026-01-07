@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getFeaturedProducts, getNewProducts, categories } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/FormElements';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -44,13 +44,8 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>Shop by Category</h2>
           <div className={styles.categoryGrid}>
             {categories.slice(1).map((category) => (
-              <Link
-                key={category.slug}
-                href={`/products?category=${category.slug}`}
-                className={styles.categoryCard}
-              >
+              <Link key={category.slug} href={`/products?category=${category.slug}`} className={styles.categoryCard}>
                 <div className={styles.categoryImage}>
-                  {/* Placeholder patterns for categories since we don't have images in data */}
                   <div className={styles.categoryPlaceholder} />
                   <span className={styles.categoryNameOver}>{category.name}</span>
                 </div>
@@ -65,9 +60,7 @@ export default function HomePage() {
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Curated For You</h2>
-            <Link href="/products" className={styles.viewAll}>
-              View All Products
-            </Link>
+            <Link href="/products" className={styles.viewAll}>View All Products</Link>
           </div>
           <div className={styles.productGrid}>
             {featuredProducts.slice(0, 4).map((product, index) => (
@@ -80,18 +73,12 @@ export default function HomePage() {
       {/* Editorial Split */}
       <section className={styles.editorial}>
         <div className={styles.editorialImage}>
-          <Image
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
-            alt="Interior design"
-            fill
-            className={styles.img}
-          />
+          <Image src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Interior design" fill className={styles.img} />
         </div>
         <div className={styles.editorialContent}>
           <h2 className={styles.editorialTitle}>The Art of Living</h2>
           <p className={styles.editorialText}>
-            Discover products that bring harmony to your space. Our varied collection
-            ensures you find exactly what reflects your personal taste.
+            Discover products that bring harmony to your space. Our varied collection ensures you find exactly what reflects your personal taste.
           </p>
           <Link href="/products?category=accessories">
             <Button variant="outline">Explore Accessories</Button>

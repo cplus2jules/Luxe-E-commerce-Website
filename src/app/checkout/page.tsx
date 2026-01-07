@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
+import { Button, Input } from '@/components/ui/FormElements';
 import styles from './page.module.css';
 
 export default function CheckoutPage() {
@@ -21,10 +20,9 @@ export default function CheckoutPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate API call
         setTimeout(() => {
             setLoading(false);
-            clearCart(); // Clear cart after successful order
+            clearCart();
             setStep('confirm');
         }, 2000);
     };
@@ -34,9 +32,7 @@ export default function CheckoutPage() {
             <div className={styles.empty}>
                 <div className={styles.container}>
                     <h1>Your bag is empty</h1>
-                    <Link href="/products">
-                        <Button>Return to Shop</Button>
-                    </Link>
+                    <Link href="/products"><Button>Return to Shop</Button></Link>
                 </div>
             </div>
         );
@@ -49,13 +45,9 @@ export default function CheckoutPage() {
                     <div className={styles.confirmationCard}>
                         <div className={styles.checkIcon}>✓</div>
                         <h1 className={styles.confirmTitle}>Order Place Successfully</h1>
-                        <p className={styles.confirmText}>
-                            Thank you for your purchase. We have sent an order confirmation email.
-                        </p>
+                        <p className={styles.confirmText}>Thank you for your purchase. We have sent an order confirmation email.</p>
                         <p className={styles.orderNumber}>Order #LUXE-{Math.floor(Math.random() * 10000)}</p>
-                        <Link href="/">
-                            <Button size="lg">Continue Shopping</Button>
-                        </Link>
+                        <Link href="/"><Button size="lg">Continue Shopping</Button></Link>
                     </div>
                 </div>
             </div>
@@ -66,16 +58,13 @@ export default function CheckoutPage() {
         <div className={styles.page}>
             <div className={styles.container}>
                 <h1 className={styles.pageTitle}>Checkout</h1>
-
                 <div className={styles.layout}>
-                    {/* Checkout Form */}
                     <div className={styles.formSection}>
                         <form onSubmit={handleSubmit} className={styles.form} id="checkout-form">
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Contact Information</h2>
                                 <Input label="Email Address" type="email" placeholder="julian.salas@example.com" required />
                             </section>
-
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Shipping Address</h2>
                                 <div className={styles.row}>
@@ -90,17 +79,12 @@ export default function CheckoutPage() {
                                     <Input label="ZIP" placeholder="8600" required />
                                 </div>
                             </section>
-
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>Payment</h2>
-                                <div className={styles.paymentPlaceholder}>
-                                    Just pay with your smile! :)
-                                </div>
+                                <div className={styles.paymentPlaceholder}>Just pay with your smile! :)</div>
                             </section>
                         </form>
                     </div>
-
-                    {/* Order Summary Sidebar */}
                     <div className={styles.summarySection}>
                         <div className={styles.summaryCard}>
                             <h2 className={styles.summaryTitle}>Your Order</h2>
@@ -109,43 +93,19 @@ export default function CheckoutPage() {
                                     <div key={`${item.product.id}-${item.selectedSize}`} className={styles.summaryItem}>
                                         <div className={styles.itemInfo}>
                                             <span className={styles.itemName}>{item.product.name}</span>
-                                            <span className={styles.itemVariiant}>
-                                                Qty: {item.quantity} | Size: {item.selectedSize || 'N/A'}
-                                            </span>
+                                            <span className={styles.itemVariiant}>Qty: {item.quantity} | Size: {item.selectedSize || 'N/A'}</span>
                                         </div>
                                         <span className={styles.itemPrice}>₱{(item.product.price * item.quantity).toLocaleString()}</span>
                                     </div>
                                 ))}
                             </div>
-
                             <div className={styles.totals}>
-                                <div className={styles.row}>
-                                    <span>Subtotal</span>
-                                    <span>₱{subtotal.toLocaleString()}</span>
-                                </div>
-                                <div className={styles.row}>
-                                    <span>Shipping</span>
-                                    <span>{shipping === 0 ? 'Free' : `₱${shipping.toLocaleString()}`}</span>
-                                </div>
-                                <div className={styles.row}>
-                                    <span>Tax</span>
-                                    <span>₱{tax.toLocaleString()}</span>
-                                </div>
-                                <div className={styles.totalRow}>
-                                    <span>Total</span>
-                                    <span>₱{total.toLocaleString()}</span>
-                                </div>
+                                <div className={styles.row}><span>Subtotal</span><span>₱{subtotal.toLocaleString()}</span></div>
+                                <div className={styles.row}><span>Shipping</span><span>{shipping === 0 ? 'Free' : `₱${shipping.toLocaleString()}`}</span></div>
+                                <div className={styles.row}><span>Tax</span><span>₱{tax.toLocaleString()}</span></div>
+                                <div className={styles.totalRow}><span>Total</span><span>₱{total.toLocaleString()}</span></div>
                             </div>
-
-                            <Button
-                                type="submit"
-                                form="checkout-form"
-                                fullWidth
-                                size="lg"
-                                loading={loading}
-                            >
-                                Place Order
-                            </Button>
+                            <Button type="submit" form="checkout-form" fullWidth size="lg" loading={loading}>Place Order</Button>
                         </div>
                     </div>
                 </div>

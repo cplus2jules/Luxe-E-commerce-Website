@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import { useToast } from '@/context/ToastContext';
+import { useToast } from '@/context/FeedbackContext';
 import styles from './ProductCard.module.css';
 
 export default function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {

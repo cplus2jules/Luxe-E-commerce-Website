@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { CartItem as CartItemType, useCart } from '@/context/CartContext';
-import { useToast } from '@/context/ToastContext';
+import { useToast } from '@/context/FeedbackContext';
 import styles from './CartItem.module.css';
 
 export default function CartItem({ item }: { item: CartItemType }) {
