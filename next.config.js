@@ -9,7 +9,6 @@ const nextConfig = {
                 pathname: '/**',
             },
         ],
-        // Disable optimization for external images to avoid 500 errors
         unoptimized: true,
     },
 };

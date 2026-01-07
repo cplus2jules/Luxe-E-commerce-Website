@@ -3,11 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import styles from './ConfirmDialog.module.css';
 
-interface ConfirmDialogContextType {
-    confirm: (message: string, title?: string) => Promise<boolean>;
-}
-
-const ConfirmDialogContext = createContext<ConfirmDialogContextType | undefined>(undefined);
+const ConfirmDialogContext = createContext<{ confirm: (message: string, title?: string) => Promise<boolean> } | undefined>(undefined);
 
 export function ConfirmDialogProvider({ children }: { children: ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,19 +15,11 @@ export function ConfirmDialogProvider({ children }: { children: ReactNode }) {
         setMessage(msg);
         setTitle(ttl);
         setIsOpen(true);
-
-        return new Promise((resolve) => {
-            setResolver(() => resolve);
-        });
+        return new Promise(resolve => setResolver(() => resolve));
     };
 
-    const handleConfirm = () => {
-        resolver?.(true);
-        setIsOpen(false);
-    };
-
-    const handleCancel = () => {
-        resolver?.(false);
+    const handleResponse = (value: boolean) => {
+        resolver?.(value);
         setIsOpen(false);
     };
 
@@ -39,17 +27,13 @@ export function ConfirmDialogProvider({ children }: { children: ReactNode }) {
         <ConfirmDialogContext.Provider value={{ confirm }}>
             {children}
             {isOpen && (
-                <div className={styles.overlay} onClick={handleCancel}>
-                    <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
+                <div className={styles.overlay} onClick={() => handleResponse(false)}>
+                    <div className={styles.dialog} onClick={e => e.stopPropagation()}>
                         <h2 className={styles.title}>{title}</h2>
                         <p className={styles.message}>{message}</p>
                         <div className={styles.actions}>
-                            <button className={styles.cancelBtn} onClick={handleCancel}>
-                                Cancel
-                            </button>
-                            <button className={styles.confirmBtn} onClick={handleConfirm}>
-                                Confirm
-                            </button>
+                            <button className={styles.cancelBtn} onClick={() => handleResponse(false)}>Cancel</button>
+                            <button className={styles.confirmBtn} onClick={() => handleResponse(true)}>Confirm</button>
                         </div>
                     </div>
                 </div>
