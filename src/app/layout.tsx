@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
-import { ToastProvider } from "@/context/ToastContext";
-import { ConfirmDialogProvider } from "@/context/ConfirmDialogContext";
+import { FeedbackProvider } from "@/context/FeedbackContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -41,20 +40,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
       <body>
-        <ToastProvider>
-          <ConfirmDialogProvider>
-            <CartProvider>
-              <a href="#main-content" className="sr-only">
-                Skip to main content
-              </a>
-              <Navbar />
-              <main id="main-content">
-                {children}
-              </main>
-              <Footer />
-            </CartProvider>
-          </ConfirmDialogProvider>
-        </ToastProvider>
+        <FeedbackProvider>
+          <CartProvider>
+            <a href="#main-content" className="sr-only">Skip to main content</a>
+            <Navbar />
+            <main id="main-content">{children}</main>
+            <Footer />
+          </CartProvider>
+        </FeedbackProvider>
       </body>
     </html>
   );
