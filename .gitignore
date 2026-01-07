@@ -23,6 +23,8 @@ yarn-error.log*
 
 .env*
 .vercel
+DEPLOYMENT.md
+.env.example
 
 *.tsbuildinfo
 next-env.d.ts
