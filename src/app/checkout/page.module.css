@@ -1,0 +1,205 @@
+.page {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: var(--color-bg-primary);
+}
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-4xl);
+    text-align: center;
+    margin: var(--spacing-3xl) 0;
+    font-weight: 400;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--spacing-4xl);
+    padding-bottom: var(--spacing-4xl);
+}
+
+/* Form Styles */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.sectionTitle {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.row3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.paymentPlaceholder {
+    padding: var(--spacing-2xl);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-style: italic;
+}
+
+/* Summary Sidebar */
+.summaryCard {
+    background: var(--color-bg-elevated);
+    padding: var(--spacing-2xl);
+    border: 1px solid var(--color-border);
+    position: sticky;
+    top: 100px;
+}
+
+.summaryTitle {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
+}
+
+.itemsList {
+    margin-bottom: var(--spacing-xl);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.summaryItem:last-child {
+    border-bottom: none;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemName {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.itemVariant {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+.itemPrice {
+    font-size: var(--font-size-sm);
+}
+
+.totals {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.totals .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    font-family: var(--font-serif);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+}
+
+/* Confirmation Page */
+.confirmationPage {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    background: var(--color-bg-elevated);
+}
+
+.confirmationCard {
+    background: var(--color-bg-primary);
+    padding: var(--spacing-4xl);
+    text-align: center;
+    border: 1px solid var(--color-border);
+    max-width: 600px;
+    width: 100%;
+}
+
+.checkIcon {
+    width: 64px;
+    height: 64px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.confirmTitle {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.confirmText {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.orderNumber {
+    font-weight: 700;
+    margin-bottom: var(--spacing-2xl);
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summaryCard {
+        position: static;
+        order: -1;
+        /* Show summary first on mobile? Or last? Usually last used better for mobile flows, but classic often puts concise summary top. */
+        margin-bottom: var(--spacing-2xl);
+    }
+}

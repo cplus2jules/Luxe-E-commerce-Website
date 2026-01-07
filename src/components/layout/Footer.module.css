@@ -1,0 +1,226 @@
+.footer {
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+}
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+/* Brand Section */
+.brand {
+    max-width: 300px;
+}
+
+.logo {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Social Links */
+.socialLinks {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+}
+
+.socialLink:hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+}
+
+/* Links Columns */
+.columnTitle {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.linkList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.link {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.link:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+/* Newsletter */
+.newsletter {
+    grid-column: span 1;
+}
+
+.newsletterText {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.form {
+    display: flex;
+    gap: 0;
+    /* Connected inputs */
+}
+
+.input {
+    flex: 1;
+    padding: 0 var(--spacing-md);
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-right: none;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+    border-color: var(--color-primary);
+}
+
+.submitButton {
+    height: 44px;
+    padding: 0 var(--spacing-lg);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: 1px solid var(--color-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.submitButton:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+/* Bottom Bar */
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.copyright {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.legal {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.legalLink {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.legalLink:hover {
+    color: var(--color-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .brand {
+        grid-column: span 2;
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .brand {
+        grid-column: span 1;
+    }
+
+    .socialLinks {
+        justify-content: center;
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .form {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .input {
+        border-right: 1px solid var(--color-border);
+        width: 100%;
+    }
+
+    .submitButton {
+        width: 100%;
+    }
+}
