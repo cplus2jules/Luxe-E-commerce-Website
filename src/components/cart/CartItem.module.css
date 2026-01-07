@@ -108,7 +108,6 @@
     font-weight: 600;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .itemRow {
         grid-template-columns: 1fr;
@@ -120,17 +119,9 @@
     .quantityCol,
     .totalCol {
         display: none;
-        /* Hide standard columns on mobile */
     }
 
-    /* Show controls within product col for mobile? Or stick to simple row */
-    /* For simplicity, classic mobile cart is often just list items. */
-    /* Let's adjust display for mobile */
     .productCol {
         width: 100%;
     }
-
-    /* Re-enable quantity/price inside details for mobile via extra classes if needed, 
-     but for now let's assume this simplification hides table structure. 
-     A better approach for mobile would be flex-direction column. */
 }

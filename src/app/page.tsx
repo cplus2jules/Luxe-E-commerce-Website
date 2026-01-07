@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <div className={styles.page}>
-      {/* Hero Section - Editorial Style */}
+      {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <span className={styles.heroSubtitle}>Spring Collection 2026</span>
@@ -38,7 +38,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories - Minimal Grid */}
+      {/* Categories */}
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Shop by Category</h2>
@@ -60,7 +60,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured - Classic Grid */}
+      {/* Featured */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
